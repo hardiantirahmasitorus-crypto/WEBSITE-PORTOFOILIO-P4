@@ -1,0 +1,678 @@
+
+/* ── RESET & BASE ───────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* ── NAVBAR ─────────────────────────────────── */
+.navbar {
+  background-color: #db42a0;
+  padding: 0 32px;
+  height: 64px;
+}
+.navbar {
+  background-color: #df46b1;
+  padding: 0 32px;
+  height: 64px;
+
+  /* Tambahkan ini: */
+  display: flex;
+  align-items: center;       /* vertikal center semua item */
+  justify-content: space-between;  /* logo kiri, menu tengah, tombol kanan */
+}
+/* Logo */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.logo-icon {
+  color: #cc3492;
+  font-size: 1.5rem;
+}
+
+/* Menu Links */
+.navbar__links {
+  display: flex;          /* list item jadi horizontal */
+  gap: 32px;
+  list-style: none;
+}
+
+.navbar__links a {
+  color: #cccccc;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.navbar__links a:hover {
+  color: #ffffff;
+}
+
+/* Tombol CTA */
+.btn-primary {
+  background-color: #e471b0;
+  color: #ffffff;
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #eb25af;
+}
+/* ── HERO ───────────────────────────────────── */
+.hero {
+  min-height: calc(100vh - 64px); /* full tinggi layar dikurangi navbar */
+  background: linear-gradient(135deg,  #ec8acc, #aca8a8, #da79b9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+}
+
+.hero__content {
+  max-width: 640px;
+  text-align: center;
+}
+
+.hero__badge {
+  display: inline-block;
+  background-color: rgba(230, 79, 149, 0.2);
+  color: #e464af;
+  border: 1px solid #ce6097;
+  padding: 4px 16px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #e963c1;
+}
+
+.hero__desc {
+  color: #000000;
+  font-size: 1.1rem;
+  margin-bottom: 36px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-outline {
+  border: 2px solid #d86fa0;
+  color: #db6093;
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background-color: #e979be;
+  color: #ffffff;
+}
+/* ── CONTAINER (utility class) ──────────────── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ── SKILLS SECTION ─────────────────────────── */
+.skills {
+  padding: 96px 0;
+  background-color: #f8f9fa;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  color: #e977b0;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #666666;
+  margin-bottom: 56px;
+}
+
+/* ── CSS GRID: 3 kolom ──────────────────────── */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── SKILL CARD ─────────────────────────────── */
+.skill-card {
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 32px 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.skill-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f16bba;
+  margin-bottom: 8px;
+}
+
+.skill-card p {
+  color: #1b1b1b;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+/* ════════════════════════════════════════════
+  RESPONSIVE DESIGN — Mobile First Override
+  Breakpoints: 768px (tablet), 1024px (desktop)
+═══════════════════════════════════════════════ */
+
+/* ── TABLET & ke bawah (max 1023px) ────────── */
+@media (max-width: 1023px) {
+
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr); /* 3 kolom -> 2 kolom */
+  }
+
+  .hero__title {
+    font-size: 2.4rem;
+  }
+}
+
+/* ── MOBILE (max 767px) ─────────────────────── */
+@media (max-width: 767px) {
+
+  /* Navbar: sembunyikan menu, tampilkan hamburger (sederhana) */
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .navbar__links {
+    display: none; /* sembunyikan menu di mobile */
+  }
+
+  /* Hero: font lebih kecil */
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__desc {
+    font-size: 1rem;
+  }
+
+  /* Skills: 1 kolom di mobile */
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Container: padding lebih kecil */
+  .container {
+    padding: 0 20px;
+  }
+
+  /* Skills section: padding lebih kecil */
+  .skills {
+    padding: 64px 0;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+/* ── FOOTER ─────────────────────────────────── */
+.footer {
+  background-color: #e26ea4;
+  padding: 32px 0;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer__brand {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.footer__copy {
+  color: #1d1c1c;
+  font-size: 0.85rem;
+}
+
+.footer__links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer__links a {
+  color: #888888;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer__links a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ── PORTFOLIO SECTION ───────────────────────── */
+.portfolio {
+  padding: 96px 0;
+  background: linear-gradient(135deg, #dd75b2, #fefefe, #e75cad);
+}
+
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* Card */
+.portfolio-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.portfolio-card__image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.portfolio-card__content {
+  padding: 24px;
+}
+
+.portfolio-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #d85ba0;
+}
+
+.portfolio-card p {
+  font-size: 0.9rem;
+  color: #eec2dd;
+  margin-bottom: 16px;
+}
+
+.portfolio-card__tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.portfolio-card__tags span {
+  background-color: #f0f0ff;
+  color: #e94e89;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .portfolio__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .portfolio__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio {
+    padding: 64px 0;
+  }
+}
+/* ── CONTACT SECTION ───────────────────────── */
+.contact {
+  padding: 96px 0;
+  background-color: #f8f9fa;
+}
+
+.contact__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 48px;
+}
+
+/* ── CONTACT INFO ───────────────────────── */
+.contact__info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  color: #ce5c91;
+}
+
+.contact__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.contact__icon {
+  font-size: 1.5rem;
+}
+
+.contact__label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #d85889;
+}
+
+.contact__socials {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.contact__socials a {
+  font-size: 0.9rem;
+  color: #df55a1;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.contact__socials a:hover {
+  color: #eb7fc1;
+}
+
+/* ── FORM ───────────────────────── */
+.contact__form form {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #e0508c;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(13, 23, 66, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .contact__wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact {
+    padding: 64px 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .profile-box {
+    width: 220px;
+    height: 280px;
+  }
+}
+/* Pengaturan agar teks dan gambar berdampingan */
+.hero__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Teks ke kiri, gambar ke kanan */
+  gap: 50px;
+  width: 100%;
+}
+
+.hero__content {
+  flex: 1;
+  text-align: left; /* Teks menjadi rata kiri */
+}
+
+.hero__image {
+  flex-shrink: 0; /* Mencegah gambar terhimpit/lonjong */
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Memastikan gambar tetap bulat sempurna dan tidak lonjong */
+.profile-photo {
+  width: 350px; /* Sesuaikan ukuran */
+  height: 350px; /* Harus sama dengan width agar bulat */
+  border-radius: 50%;
+  object-fit: cover; /* Menjaga proporsi foto di dalam lingkaran */
+  border: 8px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(219, 66, 160, 0.3);
+}
+
+/* Agar tampilan rapi di HP */
+@media (max-width: 768px) {
+  .hero__container {
+    flex-direction: column-reverse; /* Gambar di atas, teks di bawah pada HP */
+    text-align: center;
+  }
+  .hero__content {
+    text-align: center;
+  }
+  .profile-photo {
+    width: 250px;
+    height: 250px;
+  }
+}      
+
+/* ─── FITUR 1: ROOT & DARK MODE VARIABLES ─── */
+:root {
+  --primary: #db42a0;
+  --secondary: #e471b0;
+  --bg-body: #ffffff;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --card-bg: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── 1. VARIABLES & DARK MODE ─── */
+:root {
+  --primary: #db42a0;
+  --secondary: #e471b0;
+  --bg-body: #ffffff;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --card-bg: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --hero-grad: linear-gradient(135deg, #fdf2f8 0%, #fbcfe8 100%);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode {
+  --bg-body: #0f172a;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --card-bg: #1e293b;
+  --nav-bg: rgba(15, 23, 42, 0.9);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --hero-grad: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+}
+
+/* ─── 2. BASE STYLES ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0; padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.6;
+  transition: var(--transition);
+  overflow-x: hidden;
+}
+
+/* ─── 3. COMPONENTS ─── */
+.scroll-line {
+  position: fixed; top: 0; left: 0; height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  z-index: 2000; width: 0%;
+}
+
+.navbar {
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  position: fixed; top: 0; width: 100%; height: 75px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 8%; z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.theme-btn {
+  background: var(--border-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 40px; height: 40px;
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+
+.theme-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: rotate(15deg);
+}
+
+/* ─── 4. HERO SECTION ─── */
+.hero {
+  min-height: 100vh;
+  background: var(--hero-grad);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 100px 8% 50px;
+  transition: var(--transition);
+}
+
+.profile-photo {
+  width: 320px; height: 320px;
+  border-radius: 50%; object-fit: cover;
+  border: 8px solid var(--glass-bg);
+  box-shadow: 0 0 40px rgba(219, 66, 160, 0.3);
+  animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); box-shadow: 0 0 50px rgba(219, 66, 160, 0.6); }
+}
+
+/* ─── 5. UTILITIES ─── */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 24px; padding: 35px;
+  backdrop-filter: blur(15px);
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--primary); color: white;
+  padding: 15px 35px; border-radius: 12px;
+  text-decoration: none; font-weight: 600;
+}
